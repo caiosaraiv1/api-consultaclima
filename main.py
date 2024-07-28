@@ -1,12 +1,15 @@
 from flask import Flask, jsonify, request
 import requests
 from googletrans import Translator
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 translator = Translator()
 app = Flask(__name__)
 
 URL_BASE = "http://api.openweathermap.org/data/2.5/weather?"
-API_KEY = "ca90b2ab413e3ba963fea46e94bb4f76"
+API_KEY = os.getenv("API_KEY")
 
 def kelvin_to_celsius(kelvin):
     celsius = kelvin - 273.15
